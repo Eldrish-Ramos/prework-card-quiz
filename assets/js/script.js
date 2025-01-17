@@ -63,9 +63,5 @@ storeToLocal(firstCardSet, card6);
 storeToLocal(firstCardSet, card7);
 storeToLocal(firstCardSet, card8);
 
-//let randCard = getRandomCard(firstCardSet.length);
-//console.log(firstCardSet[randCard]);
-console.log(firstCardSet);
-console.log(randomizeArray(firstCardSet));
 
 
