@@ -19,11 +19,13 @@ function createCard(term, description, question, answer)
     return cardSet;
 }
 
-function storeToLocal(object)
+function storeToLocal(arrayToStore, object)
 {
-    firstCardSet.push(object);
-    localStorage.setItem('FlashCard', JSON.stringify(firstCardSet));
+    arrayToStore.push(object);
+    localStorage.setItem('FlashCard', JSON.stringify(arrayToStore));
 }
+
+
 
 function getRandomCard(max) {
     return Math.floor(Math.random() * max);
@@ -40,14 +42,14 @@ let card6 = createCard("Card6", "This is card 6", "what does the body element re
 let card7 = createCard("Card7", "This is card 7", "what does the body element represent", 0);
 let card8 = createCard("Card8", "This is card 8", "what does the body element represent", 0);
 
-storeToLocal(card1);
-storeToLocal(card2);
-storeToLocal(card3);
-storeToLocal(card4);
-storeToLocal(card5);
-storeToLocal(card6);
-storeToLocal(card7);
-storeToLocal(card8);
+storeToLocal(firstCardSet, card1);
+storeToLocal(firstCardSet, card2);
+storeToLocal(firstCardSet, card3);
+storeToLocal(firstCardSet, card4);
+storeToLocal(firstCardSet, card5);
+storeToLocal(firstCardSet, card6);
+storeToLocal(firstCardSet, card7);
+storeToLocal(firstCardSet, card8);
 
 let randCard = getRandomCard(firstCardSet.length);
 console.log(firstCardSet[randCard]);
