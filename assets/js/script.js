@@ -55,3 +55,70 @@ let randCard = getRandomCard(firstCardSet.length);
 console.log(firstCardSet[randCard]);
 
 
+//unsure where anything below this line goes, but thought maybe commit it somewheree. Codepen says it is correct --ss
+
+// Function to create a new card object
+function createCard(term, description, question, answer) {
+    return { term, description, question, answer };
+}
+
+// Function to get card details from inputs
+function getCardDetails() {
+    const term = document.querySelector('#term').value;
+    const description = document.querySelector('#description').value;
+    const question = document.querySelector('#question').value;
+    const answer = document.querySelector('#answer').value;
+
+    if (!term || !description || !question || !answer) {
+        alert('Please fill out all card details.');
+        return null;
+    }
+
+    return createCard(term, description, question, answer === 'true');
+}
+
+// Function to add cards to the array
+function addCards() {
+    const cardSetName = prompt('Enter a name for your card set:');
+    if (!cardSetName) {
+        alert('Card set name is required.');
+        return;
+    }
+
+    let cards = [];
+    let keepAdding = true;
+
+    while (keepAdding) {
+        const newCard = getCardDetails();
+        if (newCard) {
+            cards.push(newCard);
+        }
+
+        keepAdding = confirm('Would you like to add another card?');
+    }
+
+    // Save to local storage
+    localStorage.setItem(cardSetName, JSON.stringify(cards));
+    alert(`Card set "${cardSetName}" saved successfully.`);
+}
+
+// Page element functionality
+window.onload = function () {
+    const resetCardsButton = document.querySelector('#nav a:nth-child(2)');
+    const shuffleButton = document.querySelector('#nav a:nth-child(3)');
+
+    if (resetCardsButton) {
+        resetCardsButton.addEventListener('click', () => {
+            if (confirm('Are you sure you want to reset all cards?')) {
+                localStorage.clear();
+                alert('All cards have been reset.');
+            }
+        });
+    }
+
+    if (shuffleButton) {
+        shuffleButton.addEventListener('click', () => {
+            alert('Shuffle functionality is under development.');
+        });
+    }
+};
