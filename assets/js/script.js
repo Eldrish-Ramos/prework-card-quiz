@@ -101,24 +101,53 @@ function addCards() {
     localStorage.setItem(cardSetName, JSON.stringify(cards));
     alert(`Card set "${cardSetName}" saved successfully.`);
 }
-
 // Page element functionality
 window.onload = function () {
     const resetCardsButton = document.querySelector('#nav a:nth-child(2)');
     const shuffleButton = document.querySelector('#nav a:nth-child(3)');
+    const cardContainer = document.querySelector('.grid');
+    const cards = Array.from(cardContainer.children);
 
     if (resetCardsButton) {
         resetCardsButton.addEventListener('click', () => {
-            if (confirm('Are you sure you want to reset all cards?')) {
-                localStorage.clear();
-                alert('All cards have been reset.');
-            }
+            // Get all card elements
+            const cards = cardContainer.querySelectorAll('.s12');
+            
+            // Reset each cards
+            cards.forEach((card, index) => {
+                const title = card.querySelector('h5');
+                const content = card.querySelector('p');
+                
+                title.textContent = `Flashcard ${index + 1}`;
+                content.textContent = `Content of the flashcard ${index + 1}`;
+            });
+            
+            // Clear and reset localStorage
+            localStorage.clear();
+            firstCardSet = [];
+            
+            // puts cards in order
+            [card1, card2, card3, card4, card5, card6, card7, card8].forEach((card, index) => {
+                card = createCard(`Card${index + 1}`, `This is card ${index + 1}`, "what does the body element represent", 0);
+                storeToLocal(firstCardSet, card);
+            });
         });
     }
 
     if (shuffleButton) {
         shuffleButton.addEventListener('click', () => {
-            alert('Shuffle functionality is under development.');
+            const shuffledCards = shuffleCards(cards);
+            // Remove existing cards
+            cardContainer.innerHTML = '';
+            // Add shuffled cards back
+            shuffledCards.forEach(card => cardContainer.appendChild(card));
         });
     }
 };
+function shuffleCards(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+}
