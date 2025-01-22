@@ -1,67 +1,100 @@
-// Test code for creating cards and displaying them
+//Element Reference Variables
+const cardTermBox = document.querySelector('#CARD_TERM');
+const cardQuestionBox = document.querySelector('#CARD_QUESTION');
+const progressBar = document.querySelector('#TIMED_PROGRESS_BAR')
+const trueBtn = document.querySelector('#TRUE_BTN');
+const falseBtn = document.querySelector('#FALSE_BTN');
+const goNextBtn = document.querySelector('#GO_NEXT_BTN')
 
-let firstCardSet = [];
+//default hiding the button at the start of the page
+goNextBtn.setAttribute('style', "display: none;");
 
-let cardSet = {
-    term: "",
-    description: "",
-    question: "",
-    answer: ""
+//Variables
+let playerScore = 0;
+let secondsLeft = 10;
+let timerInterval;
+let playerAnswer;
+
+//This function reads any cardset that is stored into local memory - if data returns a parsed array, if no data returns empty array
+function readfromLocal()
+{
+    let dataToLoad = localStorage.getItem('FlashCard');
+    if(!dataToLoad) return [];
+    return JSON.parse(dataToLoad);
 };
 
-function createCard(term, description, question, answer)
+let loadArray = readfromLocal();
+//let testArray = readfromLocal();
+function loadCardData(arrayWithData)
 {
-    cardSet = {};
-    cardSet.term = term;
-    cardSet.description = description;
-    cardSet.question = question;
-    cardSet.answer = answer;
-    return cardSet;
-}
+    cardTermBox.textContent = loadArray[0].term;
+    cardQuestionBox.textContent = loadArray[0].question;
+};
 
-function storeToLocal(arrayToStore, object)
-{
-    arrayToStore.push(object);
-    localStorage.setItem('FlashCard', JSON.stringify(arrayToStore));
-}
-
-
-
-function getRandomCard(max) {
-    return Math.floor(Math.random() * max);
-    //return num;
+function setTime() {
+    // Sets interval in variable
+    //timerInterval = setInterval(function () {
+        
+        for(i = 0; i < loadArray.length + 2; i++)
+        {
+            timerInterval = setTimeout(function () {
+                console.log("testing for each second passed" + secondsLeft);
+                secondsLeft--;
+                if (secondsLeft === 0) 
+                    {
+                     clearTimeout(timerInterval);
+                    }
+            }, 1000 * i);
+        }
+        // console.log("Running out of time! " + secondsLeft);
+        // let currentProgress = progressBar.getAttribute("value");
+        // console.log(currentProgress);
+        //secondsLeft--;
+        // currentProgress = secondsLeft * 10;
+        
+        // progressBar.setAttribute('value', currentProgress);
+        //if (secondsLeft === 0) 
+        //{
+         //clearInterval(timerInterval);
+        // goNextBtn.setAttribute('style', "display: inline-block;");
   }
 
-function randomizeArray(arr)
+function evaluateAnswer(index, arrayWithData)
 {
-    for (let i = arr.length - 1; i > 0; i--)
+    if(playerAnswer === loadArray[index].answer)
     {
-        let j = Math.floor(Math.random() * (i + 1));
-        console.log('for loop i = :' + i);
-        console.log('random index j = :' + j);
-        [arr[i], arr[j]] = [arr[j], arr[i]];
+        playerScore += 10;
+        console.log("Answer was correct, +10 points!");
+        console.log(arrayWithData[index].answer);
     }
-    return arr;
+    else
+    {
+        console.log("Answer was not correct");
+        console.log(arrayWithData[index].answer);
+    }
+    //resetting the player answer to nothing after each evaluation
+    playerAnswer = '';
 }
 
-//const card1 = createCard("HTML", "Contains most of the informaiton about a webpage", "what does the body element represent", 0);
-let card1 = createCard("Card1", "This is card 1", "what does the body element represent", 0);
-let card2 = createCard("Card2", "This is card 2", "what does the body element represent", 0);
-let card3 = createCard("Card3", "This is card 3", "what does the body element represent", 0);
-let card4 = createCard("Card4", "This is card 4", "what does the body element represent", 0);
-let card5 = createCard("Card5", "This is card 5", "what does the body element represent", 0);
-let card6 = createCard("Card6", "This is card 6", "what does the body element represent", 0);
-let card7 = createCard("Card7", "This is card 7", "what does the body element represent", 0);
-let card8 = createCard("Card8", "This is card 8", "what does the body element represent", 0);
+//EVENTS
 
-storeToLocal(firstCardSet, card1);
-storeToLocal(firstCardSet, card2);
-storeToLocal(firstCardSet, card3);
-storeToLocal(firstCardSet, card4);
-storeToLocal(firstCardSet, card5);
-storeToLocal(firstCardSet, card6);
-storeToLocal(firstCardSet, card7);
-storeToLocal(firstCardSet, card8);
+trueBtn.addEventListener('click', function()
+{
+    console.log("True!");
+    clearInterval(timerInterval);
+    playerAnswer = true;
+    evaluateAnswer(0, loadArray);
 
+});
 
+falseBtn.addEventListener('click', function()
+{
+    console.log("False!");
+    clearInterval(timerInterval);
+    playerAnswer = false;
+    evaluateAnswer(0, loadArray);
 
+});
+
+loadCardData(loadArray);
+setTime();
