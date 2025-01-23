@@ -14,16 +14,8 @@ let playerScore = 0;
 let secondsLeft = 10;
 let timerInterval;
 let playerAnswer;
-
-//This function reads any cardset that is stored into local memory - if data returns a parsed array, if no data returns empty array
-function readfromLocal()
-{
-    let dataToLoad = localStorage.getItem('FlashCard');
-    if(!dataToLoad) return [];
-    return JSON.parse(dataToLoad);
-};
-
 let loadArray = readfromLocal();
+
 //let testArray = readfromLocal();
 function loadCardData(arrayWithData)
 {

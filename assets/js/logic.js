@@ -19,6 +19,14 @@ function createCard(term, description, question, answer)
     return cardSet;
 }
 
+//This function reads any cardset that is stored into local memory - if data returns a parsed array, if no data returns empty array
+function readfromLocal()
+{
+    let dataToLoad = localStorage.getItem('FlashCard');
+    if(!dataToLoad) return [];
+    return JSON.parse(dataToLoad);
+}
+
 function storeToLocal(arrayToStore, object)
 {
     arrayToStore.push(object);
