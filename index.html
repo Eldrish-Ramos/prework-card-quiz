@@ -7,6 +7,8 @@
   <title>Flashcard App</title>
   <meta name="description" content="Content Here">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="./assets/css/style.css">
+
   <!-- Inclusion of the beer framework -->
   <link href="https://cdn.jsdelivr.net/npm/beercss@3.8.0/dist/cdn/beer.min.css" rel="stylesheet">
   <script defer src="./assets/js/script.js" type="text/javascript"></script>
@@ -45,11 +47,23 @@
     <div class="grid">
       <!-- Flashcard 1 -->
       <div class="s12 m6 l3">
-        <article class="no-padding">
-          <img class="responsive small" src="https://img.icons8.com/color/512/quizlet.png" alt="alt text here">
-          <div class="padding">
-            <h5>Flashcard 1</h5>
-            <p>Content of the flashcard 1</p>
+        <article class="flip-card">
+          <div class="card">
+            <div class="card-front">
+              <!-- Front content -->
+              <img class="responsive small" src="https://img.icons8.com/color/512/quizlet.png" alt="alt text here">
+              <div class="padding">
+                <h5>Flashcard 1</h5>
+                <p>Front content here</p>
+              </div>
+            </div>
+            <div class="card-back">
+              <!-- Back content -->
+              <div class="padding">
+                <h5>Answer</h5>
+                <p>Back content here</p>
+              </div>
+            </div>
           </div>
         </article>
       </div>
