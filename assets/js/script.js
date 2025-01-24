@@ -151,11 +151,10 @@ function shuffleCards(array) {
     }
     return array;
 }
-
 //card flipping
-const card = document.getElementById("card1");
-card.addEventListener("click", flipCard);
-
-function flipCard() {
-    card.classList.toggle("flipCard");
-}
+const cards = document.querySelectorAll('.flip-card');
+cards.forEach(card => {
+    card.addEventListener('click', function() {
+        this.querySelector('.card').classList.toggle('flipCard');
+    });
+});
