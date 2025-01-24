@@ -151,3 +151,11 @@ function shuffleCards(array) {
     }
     return array;
 }
+
+//card flipping
+const card = document.getElementById("card1");
+card.addEventListener("click", flipCard);
+
+function flipCard() {
+    card.classList.toggle("flipCard");
+}
