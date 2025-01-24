@@ -6,12 +6,14 @@ const trueBtn = document.querySelector('#TRUE_BTN');
 const falseBtn = document.querySelector('#FALSE_BTN');
 const goNextBtn = document.querySelector('#GO_NEXT_BTN');
 const feedbackMsg = document.querySelector('#FEEDBACK_MSG');
-
+const modalMsg = document.querySelector('#MODAL_MESSAGE');
+const scoreDisp = document.querySelector('#SCORE_DISPLAY')
+const modalConfirmBtn = document.querySelector('#MODAL_CONFIRM');
 //default hiding the button at the start of the page
 goNextBtn.setAttribute('style', "display: none;");
 
 //Variables
-let playerScore = 0;
+let playerScore = 0; 
 let secondsLeft = 10;
 let timerInterval;
 let playerAnswer;
@@ -79,7 +81,9 @@ function loadCardData(index, arrayWithData) {
         progressBar.value = 100;
         setTime();
     } else {
-        alert('Quiz completed! Your score: ' + playerScore);
+        scoreDisp.textContent = (`You got ${playerScore} points!`);
+        modalMsg.show();
+        //modalMsg.setAttribute('style', "opacity: 1");
     }
 }
 
@@ -131,8 +135,14 @@ falseBtn.addEventListener('click', function() {
 goNextBtn.addEventListener('click', function () {
     currentCardIndex++;
     loadCardData(currentCardIndex, loadArray);
+    
     goNextBtn.setAttribute('style', "display: none;");
 });
+
+modalConfirmBtn.addEventListener('click', function() {
+    modalMsg.close();
+    location.reload();
+})
 
 loadCardData(currentCardIndex, loadArray);
 //setTime();
