@@ -27,3 +27,14 @@
 .flipCard {
     transform: rotateY(180deg);
 }
+h1 {
+    padding: 60px;
+    text-align: center;
+    background: #1565c0;
+    background-image: linear-gradient(90deg, #1565c0 0%, #090979 35%, #00d4ff 100%);
+    color: #fff;
+    font-size: 30px;
+    width: 100%;
+  }
+ 
+  
