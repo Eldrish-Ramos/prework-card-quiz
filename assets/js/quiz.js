@@ -113,6 +113,8 @@ function evaluateAnswer(index, arrayWithData) {
     feedbackMsg.classList.add('feedback-large');
     playerAnswer = '';
     goNextBtn.setAttribute('style', "display: inline-block;");
+    trueBtn.disabled = true;
+    falseBtn.disabled = true;
 }
 
 //EVENTS
@@ -137,6 +139,8 @@ goNextBtn.addEventListener('click', function () {
     loadCardData(currentCardIndex, loadArray);
     
     goNextBtn.setAttribute('style', "display: none;");
+    trueBtn.disabled = false;
+    falseBtn.disabled = false;
 });
 
 modalConfirmBtn.addEventListener('click', function() {
