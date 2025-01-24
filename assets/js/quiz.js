@@ -9,6 +9,7 @@ const feedbackMsg = document.querySelector('#FEEDBACK_MSG');
 const modalMsg = document.querySelector('#MODAL_MESSAGE');
 const scoreDisp = document.querySelector('#SCORE_DISPLAY')
 const modalConfirmBtn = document.querySelector('#MODAL_CONFIRM');
+const HomeBtn = document.querySelector('#nav a:nth-child(2)');
 //default hiding the button at the start of the page
 goNextBtn.setAttribute('style', "display: none;");
 
@@ -19,58 +20,6 @@ let timerInterval;
 let playerAnswer;
 let currentCardIndex = 0;
 let loadArray = readfromLocal();
-
-//let testArray = readfromLocal();
-//function loadCardData(arrayWithData)
-//{
-//   cardTermBox.textContent = loadArray[0].term;
-//    cardQuestionBox.textContent = loadArray[0].question;
-//};
-
-//function setTime() {
-    // Sets interval in variable
-    //timerInterval = setInterval(function () {
-        
-        //for(i = 0; i < loadArray.length + 2; i++)
-        //{
-            //timerInterval = setTimeout(function () {
-                //console.log("testing for each second passed" + secondsLeft);
-                //secondsLeft--;
-                //if (secondsLeft === 0) 
-                    //{
-                    //clearTimeout(timerInterval);
-                    //}
-            //}, 1000 * i);
-        //}
-        // console.log("Running out of time! " + secondsLeft);
-        // let currentProgress = progressBar.getAttribute("value");
-        // console.log(currentProgress);
-        //secondsLeft--;
-        // currentProgress = secondsLeft * 10;
-        
-        // progressBar.setAttribute('value', currentProgress);
-        //if (secondsLeft === 0) 
-        //{
-         //clearInterval(timerInterval);
-        // goNextBtn.setAttribute('style', "display: inline-block;");
-  //}
-
-//function evaluateAnswer(index, arrayWithData)
-//{
-    //if(playerAnswer === loadArray[index].answer)
-    //{
-        //playerScore += 10;
-        //console.log("Answer was correct, +10 points!");
-        //console.log(arrayWithData[index].answer);
-    //}
-    //else
-    //{
-        //console.log("Answer was not correct");
-        //console.log(arrayWithData[index].answer);
-    //}
-    //resetting the player answer to nothing after each evaluation
-    //playerAnswer = '';
-//}
 
 function loadCardData(index, arrayWithData) {
     if (index < arrayWithData.length) {
@@ -118,7 +67,6 @@ function evaluateAnswer(index, arrayWithData) {
 }
 
 //EVENTS
-
 trueBtn.addEventListener('click', function() {
     console.log("True!");
     clearInterval(timerInterval);
@@ -146,6 +94,10 @@ goNextBtn.addEventListener('click', function () {
 modalConfirmBtn.addEventListener('click', function() {
     modalMsg.close();
     location.reload();
+});
+
+HomeBtn.addEventListener('click', function() {
+    location.assign('index.html');
 })
 
 loadCardData(currentCardIndex, loadArray);
