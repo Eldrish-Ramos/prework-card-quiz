@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="./assets/css/style.css">
+
+        <!--inclusion of the beer framework-->
+        <link href="https://cdn.jsdelivr.net/npm/beercss@3.8.0/dist/cdn/beer.min.css" rel="stylesheet">
+        <script defer src="./assets/js/logic.js" type="text/javascript"></script>
+        <script defer src="./assets/js/quiz.js" type="text/javascript"></script>
+        <script type="module" src="https://cdn.jsdelivr.net/npm/beercss@3.8.0/dist/cdn/beer.min.js"></script>
+        <script type="module" src="https://cdn.jsdelivr.net/npm/material-dynamic-colors@1.1.2/dist/cdn/material-dynamic-colors.min.js"></script>
+        <style>
+            .feedback-large {
+                font-size: 2em;
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body class="light">
+        <nav id="nav" class="m l left surface-variant">
+            <a>
+              <img class="circle" src="https://img.icons8.com/color/512/quizlet.png">
+            </a>
+            <a>
+             <!-- <i>home</i> -->
+              <p>Home</p>
+              <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target = "_blank">Learn More!</a>
+            </a>
+          </nav>
+        <main class="responsive">
+        <nav class="center-align">
+            <h1><strong>HTML FlashCards</strong></h1>
+        </nav>
+            <div>
+            <article class="no-padding">
+                <article class="large">
+                    <h2 class="top center-align small-padding" id="CARD_TERM"></h2>
+                    <hr class="large">
+                    <h2 class="top large-padding center-align" id="CARD_QUESTION"></h3>
+                
+                </article>
+            </article>
+        </div>
+            <progress value="100" max="100" class="light-green-text" id="TIMED_PROGRESS_BAR"></progress>    
+            <!-- </div> -->
+            <div class="center-align">
+                <button class="large left-round" id="TRUE_BTN">True</button>
+                <button class="large right-round" id="FALSE_BTN">False</button>
+            </div>
+            <div class="padding center-align">
+                <button id="GO_NEXT_BTN">Next</button>
+            </div>
+            <div class="padding center-align">
+                <p id="FEEDBACK_MSG"></p>
+            </div>
+            <dialog class="modal" id="MODAL_MESSAGE">
+                <h5>Well Done</h5>
+                <div class="top-padding" id="SCORE_DISPLAY"></div>
+                    <nav class="right-align no-space">
+                        <!-- <button class="transparent link">Cancel</button> -->
+                        <button class="transparent link" id="MODAL_CONFIRM">Confirm</button>
+                    </nav>
+            </dialog>
+                <!-- <div class="s12 m6 l3">
+                <article class="no-padding">
+                    <img class="responsive small" src="https://img.icons8.com/color/512/quizlet.png">
+                    <div class="padding">
+                        <h5>Flashcard 1</h5>
+                        <p>Content of the flashcard</p>
+                    </article>
+                </div> -->                
+        </main>          
+</body>
+</html>
