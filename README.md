@@ -4,7 +4,7 @@
 - A quiz game with multiple cards, and question on the front and when you click it reveals the answer
 - This is group project 1 of the U of M coding bootcamp
 - We built this project because we thought it was a good use of knowledge of HTML, CSS, and JS and allowed us to go back over things we had learned in the first weeks of class.
-- We learned a bout modals, and coding of HTML, JS, and CSS
+- We learned about modals, and coding of HTML, JS, and CSS
 
 ## Features:
 - Interactive flashcard interface
