@@ -1,7 +1,10 @@
 # Prework Card Quiz
 
 ## Description:
-A quiz game with multiple cards, and question on the front and when you click it reveals the answer
+- A quiz game with multiple cards, and question on the front and when you click it reveals the answer
+- This is group project 1 of the U of M coding bootcamp
+- We built this project because we thought it was a good use of knowledge of HTML, CSS, and JS and allowed us to go back over things we had learned in the first weeks of class.
+- We learned a bout modals, and coding of HTML, JS, and CSS
 
 ## Features:
 - Interactive flashcard interface
@@ -30,6 +33,11 @@ THEN I can click again to bring up another question
 THEN the page content's styles update to reflect the selection
 
 ## Future Enhancements:
+
+## Credits:
+- Eldrish Ramos
+- Sophia Schooler
+- Dan Marlow
 
 ## License:
 
