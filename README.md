@@ -31,5 +31,10 @@ THEN the page content's styles update to reflect the selection
 
 ## Future Enhancements:
 
+## Contributors: 
+- Dan Marlow
+- Eldrish Ramos 
+- Sophia Schooler
+
 ## License:
 
